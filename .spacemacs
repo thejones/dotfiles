@@ -1,12 +1,12 @@
 ;; -*- mode: emacs-lisp -*-
-;;  ____
-;; / ___| _ __   __ _  ___ ___ _ __ ___   __ _  ___ ___
-;; \___ \| '_ \ / _` |/ __/ _ \ '_ ` _ \ / _` |/ __/ __|
-;;  ___) | |_) | (_| | (_|  __/ | | | | | (_| | (__\__ \
-;; |____/| .__/ \__,_|\___\___|_| |_| |_|\__,_|\___|___/
-;;       |_|
-;;
 ;; This file is loaded by Spacemacs at startup.
+
+;; :::===  :::====  :::====  :::===== :::===== :::=======  :::====  :::===== :::=== 
+;; :::     :::  === :::  === :::      :::      ::: === === :::  === :::      :::    
+;;  =====  =======  ======== ===      ======   === === === ======== ===       ===== 
+;;    ===  ===     ===  === ===      ===      ===     === ===  === ===          ===
+;;======  ===     ===  ===  ======= ======== ===     === ===  ===  ======= ====== 
+
 ;; It must be stored in your home directory.
 
 (defun dotspacemacs/layers ()
@@ -37,12 +37,14 @@ You should not put any user code in this function besides modifying the variable
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-enable-snippets-in-popup t)
+     osx
      better-defaults
      colors
      git
      go
-     haskell
+
      helm
      html
      
@@ -51,14 +53,16 @@ You should not put any user code in this function besides modifying the variable
                  node-add-modules-path t)
      react
 
-     latex
+     docker
+     
      markdown
-     nginx
      pdf-tools
+     
      puppet
      python
      ruby
      ruby-on-rails
+
      shell
      spell-checking
      syntax-checking
@@ -69,8 +73,7 @@ You should not put any user code in this function besides modifying the variable
      (colors :variables colors-colorize-identifiers 'variables)
      ;; Enable Nyan Cat on progress bar
      (colors :variables colors-enable-nyan-cat-progress-bar t)
-     ;; LaTeX folding for long lines
-     (latex :variables latex-enable-folding t)
+
      ;; Enable dictionary for flyspell and auto-competion
      (spell-checking :variables spell-checking-enable-auto-dictionary t)
      (spell-checking :variables enable-flyspell-auto-completion t)
@@ -98,6 +101,7 @@ You should not put any user code in this function besides modifying the variable
      gotest
      indent-guide
      rainbow-delimiters
+     company-flow
 
      ;; Javascript
      add-node-modules-path
@@ -434,6 +438,9 @@ you should place your code here."
                 web-mode-code-indent-offset 2
                 web-mode-attr-indent-offset 2)
 
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'company-flow))
+
   ;; Enable indent guide at startup
   (spacemacs/toggle-indent-guide-globally-on)
   )
@@ -470,7 +477,7 @@ you should place your code here."
  '(linum-format " %d")
  '(package-selected-packages
    (quote
-    (flycheck-flow flow-minor-mode flow-js2-mode eslint-fix add-node-modules-path prettier-js all-the-icons zones turing-theme yapfify yaml-mode xterm-color web-mode web-beautify vmd-mode unfill tagedit smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rainbow-mode rainbow-identifiers pyvenv pytest pyenv-mode py-isort puppet-mode pug-mode projectile-rails rake inflections pip-requirements pdf-tools tablist origami orgit nginx-mode mwim multi-term mmm-mode minitest markdown-toc markdown-mode magit-gitflow livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc intero hy-mode hlint-refactor hindent helm-pydoc helm-hoogle helm-gitignore helm-css-scss helm-company helm-c-yasnippet haskell-snippets haml-mode go-playground gotest go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-popup flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck-haskell flycheck-gometalinter flycheck feature-mode evil-magit magit magit-popup git-commit ghub treepy graphql with-editor eshell-z eshell-prompt-extras esh-help emmet-mode diff-hl cython-mode company-web web-completion-data company-tern dash-functional tern company-statistics company-go go-mode company-ghci company-ghc ghc haskell-mode company-cabal company-auctex company-anaconda company color-identifiers-mode coffee-mode cmm-mode chruby bundler inf-ruby beacon auto-yasnippet yasnippet auto-dictionary auctex anaconda-mode pythonic memoize ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+    (reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl dockerfile-mode docker docker-tramp company-flow flycheck-flow flow-minor-mode flow-js2-mode eslint-fix add-node-modules-path prettier-js all-the-icons zones turing-theme yapfify yaml-mode xterm-color web-mode web-beautify vmd-mode unfill tagedit smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rainbow-mode rainbow-identifiers pyvenv pytest pyenv-mode py-isort puppet-mode pug-mode projectile-rails rake inflections pip-requirements pdf-tools tablist origami orgit nginx-mode mwim multi-term mmm-mode minitest markdown-toc markdown-mode magit-gitflow livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc intero hy-mode hlint-refactor hindent helm-pydoc helm-hoogle helm-gitignore helm-css-scss helm-company helm-c-yasnippet haskell-snippets haml-mode go-playground gotest go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-popup flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck-haskell flycheck-gometalinter flycheck feature-mode evil-magit magit magit-popup git-commit ghub treepy graphql with-editor eshell-z eshell-prompt-extras esh-help emmet-mode diff-hl cython-mode company-web web-completion-data company-tern dash-functional tern company-statistics company-go go-mode company-ghci company-ghc ghc haskell-mode company-cabal company-auctex company-anaconda company color-identifiers-mode coffee-mode cmm-mode chruby bundler inf-ruby beacon auto-yasnippet yasnippet auto-dictionary auctex anaconda-mode pythonic memoize ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
