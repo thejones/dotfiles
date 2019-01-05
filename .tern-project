@@ -1,0 +1,17 @@
+{
+    "plugins": {
+        "es_modules": {},
+        "node": {},
+        "commonjs": {},
+        "webpack": {}
+    },
+    "libs": [
+        "ecma5",
+        "ecma6",
+        "ecma7",
+        "chai",
+        "react",
+
+    ],
+    "ecmaVersion": 6
+}
