@@ -1,17 +1,17 @@
 {
-    "plugins": {
-        "es_modules": {},
-        "node": {},
-        "commonjs": {},
-        "webpack": {}
-    },
-    "libs": [
-        "ecma5",
-        "ecma6",
-        "ecma7",
-        "chai",
-        "react",
-
-    ],
-    "ecmaVersion": 6
+  "plugins": {
+    "es_modules": {},
+    "node": {},
+    "node-resolve": {},
+    "node-express": {},
+    "commonjs": {},
+    "webpack": {}
+  },
+  "libs": [
+		"ecma5",
+		"ecma6",
+		"chai",
+		"react"
+  ],
+  "ecmaVersion": 6
 }
